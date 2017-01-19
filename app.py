@@ -5,9 +5,9 @@ try:
             _id, name, age = line.strip().split('\t')
             users[_id] = {'name': name, 'age': int(age)}
 except Exception:
-    print 'bad file users.csv'
+    print('bad file users.csv')
 
-print users
+print(users)
 
 goods = {}
 try:
@@ -20,9 +20,9 @@ try:
                 goods[url] = {user_id}
 
 except Exception:
-    print 'bad file views.csv'
+    print('bad file views.csv')
 
-print goods
+print(goods)
 
 URL = '6f4922f45568161a8cdf4ad2299f6d23'
 # print [users[x]['age'] for x in goods[URL]]
@@ -32,13 +32,13 @@ def print_dispersion(url):
     ranges = [0] * 11
 
     for user in goods[url]:
-        ranges[users[user]['age'] / 10] += 1
+        ranges[users[user]['age'] // 10] += 1
     for i, r in enumerate(ranges):
-        print '{}-{}: {}'.format(i * 10, i * 10 + 9, r)
+        print('{}-{}: {}'.format(i * 10, i * 10 + 9, r))
 
 
 for url in goods:
-    print '-'*100
-    print url
+    print('-'*100)
+    print(url)
     print_dispersion(url)
 

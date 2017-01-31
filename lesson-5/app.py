@@ -9,11 +9,15 @@ a = A()
 a.spam()
 
 
-class C(metaclass=ABCMeta):
-    @abstractmethod
-    def c(self):
-        pass
+import random
 
-c = C()
+x = list(range(10))
+y = x
+print(x, y, x is y)
+random.shuffle(x)
+print(x, y, x is y)
 
-c.c()
+import sys
+
+print(sum([random.gauss(0, 1) for x in range(100000)]))
+print(sys.argv)

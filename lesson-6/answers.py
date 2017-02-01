@@ -94,3 +94,13 @@ for line in sys.stdin:
 
 for line in buf:
     print(line, end="")
+
+
+# Задача 5
+# Вывести все пятницы 13 в 2017-м году
+
+from datetime import date
+for month in range(12):
+    d = date(2017, month+1, 13)
+    if d.weekday() == 4:
+        print(d)

@@ -1,23 +1,28 @@
 # Задача 1
 #
-# Напишите декоратор, который кэширует результат вызова функции и возвращает его,
-# если последующие вызовы этой функции производятся с теми же значениями
-# параметров в течение 5 минут, но не более 10 раз
+# Напишите декоратор, который кэширует результат вызова функции
+# и возвращает его, если последующие вызовы этой функции
+# производятся с теми же значениями параметров в течение 5 минут,
+# но не более 10 раз
 
 from datetime import datetime, timedelta
 from time import sleep
 
-
 def cache(func):
     cache_dict = {}
     def dec(*args, **kwargs):
-        key = tuple(args) + tuple(((k, v) for k, v in sorted(kwargs.items(), key=lambda x: x[0])))
-        if key in cache_dict and cache_dict[key][0] < 10 and datetime.now()-cache_dict[key][1] < timedelta(seconds=5):
+        key = tuple(args) + tuple(sorted(kwargs.items(), key=lambda x: x[0]))
+        if (
+            key in cache_dict and
+            cache_dict[key][0] < 10 and
+            datetime.now() - cache_dict[key][1] < timedelta(seconds=5)
+        ):
             cache_dict[key][0] += 1
         else:
             cache_dict[key] = [1, datetime.now(), func(*args, **kwargs)]
         return cache_dict[key][2]
     return dec
+
 
 
 @cache
@@ -35,14 +40,15 @@ for x in range(20):
 
 print('-'*100)
 
-for x in range(20):
-    sleep(1)
-    print(f1(1))
+# for x in range(20):
+#     sleep(1)
+#     print(f1(1))
 
 # Задача 2
 #
-# Прочитайте из файла ключевые слова (по одному в строке) и выведите на экран те из них,
-# которые встречаются более одного раза, в порядке уменьшения частоты вхождений в исходный файл.
+# Прочитайте из файла ключевые слова (по одному в строке) и
+# выведите на экран те из них, которые встречаются более
+# одного раза, в порядке уменьшения частоты вхождений в исходный файл.
 # Следует игнорировать регистр букв (прописные/заглавные).
 # Пример на входе:
 #          microsoft

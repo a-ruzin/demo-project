@@ -18,4 +18,8 @@
 # os.remove('app2.py')
 # shutil.rmtree('test')
 
-print(__file__)
+import re
+m = re.search('.rm(tr)ee', "shutil.rmtree('test')")
+print(m.group(1))
+
+

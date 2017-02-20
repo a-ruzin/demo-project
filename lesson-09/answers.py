@@ -7,11 +7,13 @@ import csv
 with sqlite3.connect('db.sqlite') as conn:
     cur = conn.cursor()
 
+    cur.execute('drop table IF EXISTS users')
     cur.execute('create table users (id, name, age)')
     with open('../lesson-3/users.csv', 'r') as csvfile:
         users_reader = csv.reader(csvfile, delimiter='\t')
         cur.executemany("insert into users values(?,?,?)", users_reader)
 
+    cur.execute('drop table IF EXISTS views')
     cur.execute('create table views (url, user_id, duration)')
     with open('../lesson-3/views.csv', 'r') as csvfile:
         views_reader = csv.reader(csvfile, delimiter='\t')

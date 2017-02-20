@@ -1,8 +1,10 @@
 import sqlite3
 
-with sqlite3.connect("file.db") as conn:
+conn = sqlite3.connect('file.db')
+with sqlite3.connect("file.db") as conn, sqlite3.connect("file.db") as conn2:
     cur = conn.cursor()
 
+    # cur.execute("drop table user")
     # cur.execute("create table user (id integer PRIMARY KEY, name TEXT, year INTEGER)")
     # cur.execute("create UNIQUE index user_year on user (year)")
     # cur.execute("insert into user values(?, ?, ?)", (None, 'Mary', 1994))
@@ -26,7 +28,7 @@ with sqlite3.connect("file.db") as conn:
     #     row = cur.fetchone()
     #     if not row:
     #         break
-    #     id, name, year= row
+    #     id, name, year = row
     #     print(id, name, year)
 
     # cur.execute("select * from user")
@@ -45,7 +47,8 @@ with sqlite3.connect("file.db") as conn:
     # cur.execute("select id, name, year from user")
     # for row in cur:
     #     print(row['id'], row['name'], row['year'])
-    #
+
+
     # print('-'*50)
     #
     # cur.execute("select id, name, year from user")

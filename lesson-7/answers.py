@@ -50,7 +50,7 @@ if r.status_code == 200:
     cnt = (len(content)-len(content.lower().replace(word, ''))) // len(word)
     print("Слово '{}' встречается {} раз".format(word, cnt))
 else:
-    print("неудалось скачать страницу")
+    print("не удалось скачать страницу")
 
 
 # Задача 3
@@ -104,4 +104,4 @@ if r.status_code == 200:
         print("{}\t{}".format(url, title))
 
 else:
-    print("неудалось скачать страницу")
+    print("не удалось скачать страницу")

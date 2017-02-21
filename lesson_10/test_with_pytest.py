@@ -56,17 +56,3 @@ def test_fixture3(randomfixture2):
 def test_fixture4(randomfixture2):
     print(randomfixture2)
 
-
-# --------------------
-class ProductionClass():
-    def method(self, *args):
-        return args
-
-from unittest.mock import MagicMock
-
-def test_mock():
-    thing = ProductionClass()
-    print(thing.method(1, 2, 3, 4))
-    thing.method = MagicMock(return_value=3)
-    print(thing.method(3, 4, 5, 'value'))
-    assert thing.method(3, 4, 5, 'value') == 3

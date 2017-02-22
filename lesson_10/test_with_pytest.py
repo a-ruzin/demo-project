@@ -56,3 +56,4 @@ def test_fixture3(randomfixture2):
 def test_fixture4(randomfixture2):
     print(randomfixture2)
 
+# options: --doctest-modules

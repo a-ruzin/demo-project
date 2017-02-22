@@ -1,5 +1,4 @@
-from unittest.mock import MagicMock, Mock, patch
-
+from unittest.mock import MagicMock, Mock, patch, sentinel
 
 # -------------------- правка конкретного метода
 import pytest
@@ -124,8 +123,8 @@ def test_mock9():
 
 
 # --------------- @patch декоратор
-@patch('lesson_05.answers.Employee.get_salary', lambda self: 100)
+@patch('lesson_05.answers.Employee.get_salary', lambda self: sentinel.salary)
 def test():
     from lesson_05.answers import Employee
     e = Employee('Olga', 333)
-    assert e.get_salary() == 100
+    assert e.get_salary() == sentinel.salary
